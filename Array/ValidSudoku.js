@@ -6,52 +6,33 @@ var isValidSudoku = function(board) {
     // check column
     // check 3x3 square
 
-    let dict = {}
-    let i = board.length - 1
-    let j = 0
+    for (let i = 0; i < 9; i++) {
+        let col = new Set(),
+            row = new Set(),
+            box = new Set();
 
-    while (j < board[i].length && i > 0){
-        if(board[i][j] !== '.' && dict[board[i][j]]){
-            console.log(false)
-            break
-        } else {
-            dict[board[i][j]] = true
+        for(let j = 0; j < 9; j++) {
+            let _row = board[i][j]
+            let _col = board[j][i]
+            let _box = board[3 * Math.floor(i/3) + Math.floor(j/3)][3 * (i%3) + (j%3)]
+
+            if (_row != '.') {
+                if (row.has(_row)) return false;
+                row.add(_row);
+            } 
+
+            if (_col != '.') {
+                if (col.has(_col)) return false;
+                col.add(_col);
+            } 
+
+            if (_box != '.') {
+                if (box.has(_box)) return false;
+                box.add(_box);
+            } 
         }
-        i--
     }
-
-    while(i > 0){
-        dict = {}
-        while(j < board[i].length){
-            if(board[i][j] !== '.' && dict[board[i][j]]){
-                console.log(false)
-                break
-            } else {
-                dict[board[i][j]] = true
-            }
-            j++
-        }
-        i--
-    }
-
-    let count = 4
-    let x = 0
-    let y = 0
-
-    while(x < count){
-        while(y < count){
-            if(board[x][y] !== '.' && dict[board[x][y]]){
-                console.log(false)
-                break
-            } else {
-                dict[board[x][y]]
-            }
-            y++
-        }
-        x++
-    }
-
-    console.log(dict)
+    return true
 };
 
 let board = 
