@@ -7,7 +7,7 @@
 // [5,6]
 
 var findDisappearedNumbers = function(nums) {
-    let arraySize = Math.max(...nums)
+    let arraySize = nums.length
     let missingNum = []
     let i = 0
     let j = 1
