@@ -20,7 +20,6 @@ var longestPalindrome = function(s) {
     let len = s.length
 
     while(len > 0){
-        console.log('loop')
         for(let i = 0; i < s.length - len + 1; i++){
             let str = s.slice(i, i+len)
 
