@@ -35,7 +35,7 @@ var numIdenticalPairs = function(nums) {
             dict[num]++
         }
     }
-    console.log(count)
+    return count
 };
 
 numIdenticalPairs([1,2,3,1,1,3])
